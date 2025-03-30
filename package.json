@@ -1,0 +1,32 @@
+{
+  "name": "inkspire",
+  "version": "1.0.0",
+  "description": "🚀 InkSpire – A modern, AI-powered blogging platform with rich features like AI-assisted writing, voice-to-text, monetization, and community engagement. Built with React, Node.js, Express, MongoDB, and TailwindCSS. 💡✨",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-rva/InkSpire.git"
+  },
+  "keywords": [
+    "blogging",
+    "AI",
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "TailwindCSS",
+    "Markdown",
+    "content-creation",
+    "monetization"
+  ],
+  "author": "Birva Patel <birvapatel0127@gmail.com>",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/b-rva/InkSpire/issues"
+  },
+  "homepage": "https://github.com/b-rva/InkSpire#readme"
+}

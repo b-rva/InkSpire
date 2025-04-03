@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/b-rva/InkSpire/issues"
   },
-  "homepage": "https://github.com/b-rva/InkSpire#readme"
+  "homepage": "https://github.com/b-rva/InkSpire#readme",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "react-router-dom": "^6.17.0"
+  }
 }

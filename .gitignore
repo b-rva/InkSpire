@@ -134,3 +134,37 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore environment variables
+server/.env
+.env
+
+# Ignore node_modules
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# Ignore build files
+dist/
+client/build/
+server/build/
+
+# Ignore logs
+*.log
+server/logs/
+client/logs/
+
+# Ignore dependency lock files (optional, but usually kept)
+package-lock.json
+server/package-lock.json
+client/package-lock.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Text files
+Steps.txt
+Remainings or Notes.txt
+Keys an Passwords.txt
+ProjectSteps.txt

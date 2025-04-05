@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../api/api"; // API call to login
+import { login } from "../api/api";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await login({ email, password });
-      // If login is successful, navigate to the home page
       if (response.status === 200) {
         navigate("/home");
       }
@@ -22,15 +23,15 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
-        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
+    <div className="flex justify-center items-center w-screen h-screen bg-gradient-to-br from-[#553f5d] to-[45455a]">
+      <div className="w-full max-w-lg sm:max-w-md p-10 bg-[#211f21] bg-opacity-20 backdrop-blur-lg rounded-4xl shadow-2xl text-center mx-6">
+        <h2 className="text-2xl font-bold text-[#acacac] mb-6">Sign in</h2>
+        {error && <div className="text-red-400 text-center mb-4">{error}</div>}
+
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700">
-              Email
-            </label>
+          
+          {/* Email Input */}
+          <div className="relative mb-6">
             <input
               type="email"
               id="email"
@@ -38,46 +39,74 @@ const Login = () => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="peer w-full px-4 pt-2 pb-2 bg-transparent border border-gray-500 rounded-lg text-[#acacac] placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#553f5d]"
+              placeholder="Email"
             />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700">
-              Password
+            <label
+              htmlFor="email"
+              className="absolute left-3 -top-3.5 bg-[#211f21] px-1 text-sm text-gray-300 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-[#acacac]"
+            >
+              Email
             </label>
+          </div>
+
+          {/* Password Input */}
+          <div className="relative mb-6">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="peer w-full px-4 pt-2 pb-2 bg-transparent border border-gray-500 rounded-lg text-[#acacac] placeholder-transparent focus:outline-none focus:ring-2 focus:ring-[#553f5d]"
+              placeholder="Password"
             />
-          </div>
-          <div className="mb-4 text-center">
-            <button
-              type="submit"
-              className="w-full py-2 px-4 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600"
+            <label
+              htmlFor="password"
+              className="absolute left-3 -top-3.5 bg-[#211f21] px-1 text-sm text-gray-300 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-[#acacac]"
             >
-              Login
+              Password
+            </label>
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#acacac]"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
+
+          {/* Sign-in Button */}
+          <button className="w-full bg-gradient-to-r from-[#45455a] to-[#353544] text-white py-2 rounded-full mt-1 hover:opacity-90 transition">
+            Sign in
+          </button>
         </form>
-        <div className="text-center mt-4">
-          <a href="/reset-password" className="text-blue-500">
-            Forgot password?
+
+        {/* Remember me & Forgot Password */}
+        <div className="flex flex-col sm:flex-row justify-between text-sm text-gray-300 mt-4">
+          <label className="flex items-center space-x-2">
+            <input type="checkbox" className="accent-[#553f5d]" />
+            <span>Remember me</span>
+          </label>
+          <a href="/reset-password" className="text-[#7b5e87] hover:underline mt-2 sm:mt-0">
+            Need help?
           </a>
         </div>
-        <div className="text-center mt-2">
-          <span className="text-gray-600">Don't have an account?</span>
-          <a href="/signup" className="text-blue-500">
+
+        {/* Signup Link */}
+        <p className="text-gray-300 text-center mt-4">
+          Don't have an account?{" "}
+          <a href="/signup" className="text-[#7b5e87] hover:underline">
             Sign up
           </a>
-        </div>
+        </p>
       </div>
     </div>
-  );
+
+
+);
+
 };
 
 export default Login;
